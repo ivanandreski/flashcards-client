@@ -11,6 +11,8 @@ import Register from "./Pages/Register";
 import RouteNames from "./Utils/RouteNames";
 import HomeLayout from "./Layout/HomeLayout";
 
+// test
+
 export const App = () => {
   return (
     <HashRouter>
