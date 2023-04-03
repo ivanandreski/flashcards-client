@@ -26,7 +26,7 @@ export const App = () => {
           <Route path={RouteNames.Register} element={<Register />} />
         </Route>
       </Routes>
-      <div>TESTING</div>
+      <div>TESTING1</div>
     </HashRouter>
   );
 };
