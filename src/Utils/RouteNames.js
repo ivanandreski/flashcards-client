@@ -3,4 +3,5 @@ export default class RouteNames {
   static Login = "/login";
   static Register = "/register";
   static Profile = "/profile";
+  static Course = (id) => `/course/${id}`;
 }

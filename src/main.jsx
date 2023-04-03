@@ -9,15 +9,17 @@ import Course from "./Pages/Course";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import RouteNames from "./Utils/RouteNames";
-import HomeLayout from "./Layout/HomeLayout";
+import Home from "./Pages/Home";
+import Profile from "./Pages/Profile";
 
 export const App = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route index element={<HomeLayout />} />
         <Route path={RouteNames.Home} element={<DefaultLayout />}>
-          <Route path="blogs/:id" element={<Course />} />
+          <Route index element={<Home />} />
+          <Route path="course/:id" element={<Course />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
         <Route path={RouteNames.Home} element={<DefaultCredentialsLayout />}>
           <Route path={RouteNames.Login} element={<Login />} />

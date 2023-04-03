@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import MyCoursesList from "../../MockDB/MyCoursesList";
+import useGetUser from "../useGetUser";
 
 const useFetchMyCourses = () => {
+  const loggedIn = useGetUser();
+
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -19,7 +22,7 @@ const useFetchMyCourses = () => {
 
   // Get list from mock db
   useEffect(() => {
-    setCourses(MyCoursesList.Courses);
+    setCourses(loggedIn ? MyCoursesList.Courses : []);
     setLoading(false);
   }, []);
   return { courses, loading, error };
