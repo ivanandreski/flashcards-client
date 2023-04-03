@@ -1,9 +1,17 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ButtonDarkGray from "../Components/ButtonDarkGray";
 import FormTextField from "../Components/FormTextField";
 import RouteNames from "../Utils/RouteNames";
+import useGetUser from "../Hooks/useGetUser";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const getUser = useGetUser();
+  if (getUser) {
+    navigate(RouteNames.Home);
+  }
+
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -14,6 +22,9 @@ const Login = () => {
 
     const email = emailRef.value;
     const password = passwordRef.value;
+
+    localStorage.setItem("user", true);
+    navigate(RouteNames.Home);
   };
 
   return (

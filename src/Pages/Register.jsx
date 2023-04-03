@@ -1,17 +1,27 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonDarkGray from "../Components/ButtonDarkGray";
 import FormTextField from "../Components/FormTextField";
 import RouteNames from "../Utils/RouteNames";
 import registerValidator from "../Validators/RegisterValidator";
+import useGetUser from "../Hooks/useGetUser";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const getUser = useGetUser();
+
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
 
   const [errorMessages, setErrorMessages] = useState({});
+
+  useEffect(() => {
+    if (getUser) {
+      navigate(RouteNames.Home);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,8 +35,9 @@ const Register = () => {
     console.log(registerValidator(fullNameRef?.current?.value));
 
     setErrorMessages(messages);
-    if (Object.keys(messages).length > 0) {
-    } else {
+    if (Object.keys(messages).length == 0) {
+      localStorage.setItem("user", true);
+      navigate(RouteNames.Home);
     }
   };
 

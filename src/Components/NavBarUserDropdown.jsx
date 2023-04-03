@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useGetUser from "../Hooks/useGetUser";
 import useDropdownOutsideAlerter from "../Hooks/useDropdownOutsideAlerter";
 import DropdownButton from "./DropdownButton";
@@ -16,6 +16,11 @@ const NavBarUserDropdown = () => {
 
   const handleClick = () => {
     setOpen(!open);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    location.reload();
   };
 
   return (
@@ -78,12 +83,12 @@ const NavBarUserDropdown = () => {
                   </Link>
                 </li>
                 <li onClick={handleClick}>
-                  <Link
-                    to="login"
+                  <button
+                    onClick={handleLogout}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Log out
-                  </Link>
+                  </button>
                 </li>
               </>
             )}

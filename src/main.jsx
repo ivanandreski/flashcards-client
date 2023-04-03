@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import "./index.css";
 import DefaultCredentialsLayout from "./Layout/DefaultCredentialsLayout";
 
@@ -10,8 +10,6 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import RouteNames from "./Utils/RouteNames";
 import HomeLayout from "./Layout/HomeLayout";
-
-// test1
 
 export const App = () => {
   return (
@@ -26,7 +24,6 @@ export const App = () => {
           <Route path={RouteNames.Register} element={<Register />} />
         </Route>
       </Routes>
-      <div>TESTING1</div>
     </HashRouter>
   );
 };
