@@ -11,6 +11,7 @@ import Register from "./Pages/Register";
 import RouteNames from "./Utils/RouteNames";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
+import Deck from "./Pages/Deck";
 
 export const App = () => {
   return (
@@ -19,6 +20,7 @@ export const App = () => {
         <Route path={RouteNames.Home} element={<DefaultLayout />}>
           <Route index element={<Home />} />
           <Route path="course/:id" element={<Course />} />
+          <Route path="deck/:id" element={<Deck />} />
           <Route path="profile" element={<Profile />} />
         </Route>
         <Route path={RouteNames.Home} element={<DefaultCredentialsLayout />}>

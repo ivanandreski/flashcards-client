@@ -4,4 +4,5 @@ export default class RouteNames {
   static Register = "/register";
   static Profile = "/profile";
   static Course = (id) => `/course/${id}`;
+  static Deck = (id) => `/deck/${id}`;
 }

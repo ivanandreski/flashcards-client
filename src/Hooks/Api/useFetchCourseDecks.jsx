@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
-import MyCoursesList from "../../MockDB/MyCoursesList";
-import useGetUser from "../useGetUser";
+import CourseDecks from "../../MockDB/CourseDecks";
 
-const useFetchMyCourses = () => {
-  const loggedIn = useGetUser();
-
-  const [courses, setCourses] = useState([]);
+const useFetchCourseDecks = () => {
+  const [decks, setDecks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -22,11 +19,11 @@ const useFetchMyCourses = () => {
 
   // Get list from mock db
   useEffect(() => {
-    setCourses(loggedIn ? MyCoursesList.Courses : []);
+    setDecks(CourseDecks.Decks);
     setLoading(false);
   }, []);
 
-  return { courses, loading, error };
+  return { decks, loading, error };
 };
 
-export default useFetchMyCourses;
+export default useFetchCourseDecks;
