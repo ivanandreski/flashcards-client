@@ -64,7 +64,7 @@ const Register = () => {
           Login
         </Link>
       </h5>
-      <form onSubmit={handleSubmit} className="w-2/4 mx-auto">
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <FormTextField
           ref={fullNameRef}
           errorMessage={errorMessages.fullName}

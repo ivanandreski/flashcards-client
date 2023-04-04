@@ -47,7 +47,7 @@ const Login = () => {
       >
         Sign in to continue
       </h5>
-      <form onSubmit={handleSubmit} className="w-2/4 mx-auto">
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <FormTextField
           ref={emailRef}
           errorMessage={errorMessages.email}

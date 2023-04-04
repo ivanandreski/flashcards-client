@@ -8,12 +8,15 @@ const DefaultLayout = () => {
   return (
     <>
       <NavBar />
-      <main className="grid grid-cols-4">
-        <div className="col-span-1">
+      <main className="grid sm:max-md:grid-cols-1 lg:max-2xl:grid-cols-4">
+        <div className="hidden lg:max-2xl:col-span-1">
           <CoursesSidebar />
         </div>
-        <div className="col-span-3">
+        <div className="sm:max-md:col-span-4 lg:max-2xl:col-span-3">
           <Outlet />
+        </div>
+        <div className="sm:max-md::col-span-4 lg:max-2xl:hidden">
+          <CoursesSidebar />
         </div>
       </main>
     </>
