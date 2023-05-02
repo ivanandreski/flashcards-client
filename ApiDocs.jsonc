@@ -1,0 +1,105 @@
+[
+  // Site ruti kade shto e potrebna avtentikacija ili avtorizacija,
+  // vo Bearer Token header ke bide praten jwt token, preku toa
+  // barajte koj user go ispratil baranjeto
+
+  // Register route(validacija za confirm password, valid email itn. ima na frontend, ako sakase napravete i na backend)
+  {
+    "email": "email se koristi i kako username za login",
+    "password": "password"
+  },
+  // RESPONSE: jwt token ako e success
+
+  // Login route
+  {
+    "email": "email",
+    "password": "password"
+  },
+  // RESPONSE: jwt token ako e success
+
+  // Logout route
+  // Prazen JSON, od bearer token header ke go zemete tokenot i ke mu napravite expire na backend
+
+  // Fetch my courses
+  // Spored jwt se vrakaat site kursevi vo koi e zaclenet korisnikot
+  // RESPONSE:
+  [
+    {
+      "id": 1,
+      "name": "Course 1"
+    },
+    {
+      "id": 2,
+      "name": "Course 2"
+    }
+  ],
+
+  // Fetch my courses
+  // Spored jwt se vrakaat site kursevi vo koi e zaclenet korisnikot
+  // RESPONSE:
+  [
+    {
+      "id": 1,
+      "name": "Course 1"
+    },
+    {
+      "id": 2,
+      "name": "Course 2"
+    }
+  ],
+
+  // Fetch course decks
+  // Site decks za eden kurs, spored jwt se vraka i statistika za korisnikot za sekoj deck
+  // (doobjasnuvanje kaj atributite)
+  // RESPONSE:
+  [
+    {
+      "name": "Deck 1",
+      "id": 1,
+      "correctAnswers": 6, // broj na prethodno tocno odgovoreni prasanja od korisnikot
+      "questions": 6 // vkupen broj na prasanja vo deckot, spored user deck session
+      // ako korisnikot go nema otvoreno toj deck, 0
+    },
+    {
+      "name": "Deck 2",
+      "id": 2,
+      "correctAnswers": 3,
+      "questions": 8
+    }
+  ],
+
+  /*  Ruta za otvaranje na deck session spored id na deck,
+    formatot ne e biten, rutata treba spored id na deck da vrati userDeckSession so prasanja od deckot.
+    Ako prvpat go otvara toj deck, se kreira nova sesija za toj korisnikot so toj deck,
+    Ako otvara deck koj ima nekolku tocno odgovoreni prasanja se vraka postoeckata sesija,
+    Ako otvara deck so site tocno odgovoreni prasanja se prebrisuva sesijata i se vrakja nova
+    Na frontend ke imam popup koj ke go predupredi korisnikot deka ke mu se izbrise progresot za deckot
+    RESPONSE:
+*/
+  // Prasanja so status correct true/false spored sesijata
+  [
+    {
+      "question": "Question 1",
+      "answer": "Answer 1",
+      "correct": false,
+      "id": 1
+    },
+    {
+      "question": "Question 2",
+      "answer": "Answer 2",
+      "correct": true,
+      "id": 2
+    },
+    {
+      "question": "Question 3",
+      "answer": "Answer 3",
+      "correct": false,
+      "id": 3
+    }
+  ]
+
+  /*
+    Ruta za update na statusot na odredeno prasanje od false na true
+    Formatot i argumentite vie definirajte gi, ke go adaptiram na frontend
+*/
+]
