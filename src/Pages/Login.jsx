@@ -4,6 +4,7 @@ import ButtonDarkGray from "../Components/ButtonDarkGray";
 import FormTextField from "../Components/FormTextField";
 import RouteNames from "../Utils/RouteNames";
 import useGetUser from "../Hooks/useGetUser";
+import axios from "../axios/axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,11 +21,21 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const email = emailRef.value;
-    const password = passwordRef.value;
-
-    localStorage.setItem("user", true);
-    navigate(RouteNames.Home);
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    axios
+      .post("user/login", {
+        email: email,
+        password: password,
+      })
+      .then((resp) => {
+        localStorage.setItem("user", JSON.stringify(resp.data));
+        navigate(RouteNames.Home);
+      })
+      .catch((error) => {
+        console.log(error);
+        // setErrorMessages("Something went wrong :(");
+      });
   };
 
   return (

@@ -5,4 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "flashcards-client",
   plugins: [react()],
+  define: {
+    "process.env": {},
+  },
 });

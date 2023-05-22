@@ -15,4 +15,8 @@ export default class RouteNames {
   // Study
   static Course = (id) => `/course/${id}`;
   static Deck = (id) => `/deck/${id}`;
+
+  static Admin = "/admin";
+  static Teacher = "/teacher";
+  static NoPermission = "/no-permission";
 }

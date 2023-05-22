@@ -5,6 +5,7 @@ import FormTextField from "../Components/FormTextField";
 import RouteNames from "../Utils/RouteNames";
 import registerValidator from "../Validators/RegisterValidator";
 import useGetUser from "../Hooks/useGetUser";
+import axios from "../axios/axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -32,12 +33,23 @@ const Register = () => {
       passwordRef?.current?.value,
       confirmPasswordRef?.current?.value
     );
-    console.log(registerValidator(fullNameRef?.current?.value));
 
     setErrorMessages(messages);
     if (Object.keys(messages).length == 0) {
-      localStorage.setItem("user", true);
-      navigate(RouteNames.Home);
+      axios
+        .post("user/register", {
+          fullName: fullNameRef?.current?.value,
+          email: emailRef?.current?.value,
+          password: passwordRef?.current?.value,
+        })
+        .then((resp) => {
+          localStorage.setItem("user", JSON.stringify(resp.data));
+          navigate(RouteNames.Home);
+        })
+        .catch((error) => {
+          console.log(error);
+          // setErrorMessages("Something went wrong :(");
+        });
     }
   };
 

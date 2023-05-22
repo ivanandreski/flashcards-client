@@ -17,6 +17,9 @@ import Info from "./Pages/Profile/Info";
 import ChangePassword from "./Pages/Profile/ChangePassword";
 import ChangeEmail from "./Pages/Profile/ChangeEmail";
 import DeleteMyAccount from "./Pages/Profile/DeleteMyAccount";
+import Admin from "./Pages/Admin";
+import NoPermission from "./Pages/NoPermission";
+import TeacherHome from "./Pages/Teacher/TeacherHome";
 
 export const App = () => {
   return (
@@ -33,6 +36,9 @@ export const App = () => {
         <Route path={RouteNames.Home} element={<DefaultCredentialsLayout />}>
           <Route path={RouteNames.Login} element={<Login />} />
           <Route path={RouteNames.Register} element={<Register />} />
+          <Route path={RouteNames.Admin} element={<Admin />} />
+          <Route path={RouteNames.Teacher} element={<TeacherHome />} />
+          <Route path={RouteNames.NoPermission} element={<NoPermission />} />
         </Route>
         <Route path={RouteNames.profile} element={<ProfileLayout />}>
           <Route path={RouteNames.Info} element={<Info />} />

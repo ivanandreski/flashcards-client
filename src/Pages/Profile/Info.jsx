@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import useGetUser from "../../Hooks/useGetUser";
 
 const Info = () => {
-  return (
-    <div>Info</div>
-  )
-}
+  const user = useGetUser();
 
-export default Info
+  return (
+    <div>
+      <h1>User: {user.fullName}</h1>
+      <h1>Email: {user.email}</h1>
+      <h1>Role: {user.role}</h1>
+    </div>
+  );
+};
+
+export default Info;

@@ -6,7 +6,8 @@ import DropdownButton from "./DropdownButton";
 import RouteNames from "../Utils/RouteNames";
 
 const NavBarUserDropdown = () => {
-  const loggedIn = useGetUser();
+  const navigate = useNavigate();
+  const loggedIn = useGetUser() != null;
 
   const [open, setOpen] = useState(false);
 
@@ -20,7 +21,7 @@ const NavBarUserDropdown = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    location.reload();
+    navigate(RouteNames.Home);
   };
 
   return (
