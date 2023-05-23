@@ -5,7 +5,7 @@ import ButtonDarkGray from "../../Components/ButtonDarkGray";
 import useGetUser from "../../Hooks/useGetUser";
 import Select from "react-select";
 
-const CreateSubject = () => {
+const CreateDeck = () => {
   const subjectRef = useRef(null);
   const user = useGetUser();
   const config = {
@@ -40,7 +40,7 @@ const CreateSubject = () => {
 
     axios
       .post(
-        `flash-cards/course/${course}/subject/create`,
+        `flash-cards/course/${course}/deck/create`,
         {
           title: name,
         },
@@ -65,13 +65,13 @@ const CreateSubject = () => {
             font-semibold
         "
       >
-        Create subject
+        Create deck
       </h1>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <FormTextField
           ref={subjectRef}
           errorMessage={errorMessage}
-          label="Subject name"
+          label="Deck name"
           placeholder=""
         />
         <Select
@@ -89,4 +89,4 @@ const CreateSubject = () => {
   );
 };
 
-export default CreateSubject;
+export default CreateDeck;

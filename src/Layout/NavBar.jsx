@@ -21,9 +21,14 @@ const NavBar = () => {
           </li>
         )}
         {user?.role == "TEACHER" && (
-          <li className="text-2xl font-semibold px-2 text-white">
-            <Link to={RouteNames.Teacher}>Teacher</Link>
-          </li>
+          <>
+            <li className="text-2xl font-semibold px-2 text-white">
+              <Link to={RouteNames.Teacher}>Teacher</Link>
+            </li>
+            <li className="text-2xl font-semibold px-2 text-white">
+              <Link to={RouteNames.Grades}>Grades</Link>
+            </li>
+          </>
         )}
       </ul>
       <ul>

@@ -18,5 +18,6 @@ export default class RouteNames {
 
   static Admin = "/admin";
   static Teacher = "/teacher";
+  static Grades = "/grades";
   static NoPermission = "/no-permission";
 }

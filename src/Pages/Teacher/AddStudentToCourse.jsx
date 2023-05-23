@@ -1,20 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import FormTextField from "../../Components/FormTextField";
 import axios from "../../axios/axios";
 import ButtonDarkGray from "../../Components/ButtonDarkGray";
 import useGetUser from "../../Hooks/useGetUser";
 import Select from "react-select";
 
-const CreateFlashcard = () => {
-  const questionRef = useRef(null);
-  const answerRef = useRef(null);
+const AddStudentToCourse = () => {
   const user = useGetUser();
   const config = {
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
   };
+  const navigate = useNavigate();
 
+  const emailRef = useRef(null);
   const [courses, setCourses] = useState([]);
   const [course, setCourse] = useState(-1);
 
@@ -33,7 +34,25 @@ const CreateFlashcard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // post placeholder
+    const email = emailRef.current.value;
+
+    axios
+      .post(
+        "admin/set-role",
+        {
+          email: email,
+          role: role,
+        },
+        config
+      )
+      .then((resp) => {
+        setErrorMessage("");
+        emailRef.current.value = "";
+        setRole(Roles.Roles[0]);
+      })
+      .catch((error) => {
+        setErrorMessage(error.response.data);
+      });
   };
 
   return (
@@ -45,19 +64,13 @@ const CreateFlashcard = () => {
             font-semibold
         "
       >
-        Create flashcards
+        Add student to course
       </h1>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <FormTextField
-          ref={questionRef}
+          ref={emailRef}
           errorMessage={errorMessage}
-          label="Question name"
-          placeholder=""
-        />
-        <FormTextField
-          ref={answerRef}
-          errorMessage={errorMessage}
-          label="Answer name"
+          label="Student email"
           placeholder=""
         />
         <Select
@@ -69,18 +82,10 @@ const CreateFlashcard = () => {
             };
           })}
         />
-        <Select
-          className="mb-5"
-          options={[
-            { label: "Deck 1", value: "0" },
-            { label: "Deck 2", value: "0" },
-            { label: "Deck 3", value: "0" },
-          ]}
-        />
         <ButtonDarkGray color="gray">Submit</ButtonDarkGray>
       </form>
     </div>
   );
 };
 
-export default CreateFlashcard;
+export default AddStudentToCourse;

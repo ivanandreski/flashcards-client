@@ -20,6 +20,7 @@ import DeleteMyAccount from "./Pages/Profile/DeleteMyAccount";
 import Admin from "./Pages/Admin";
 import NoPermission from "./Pages/NoPermission";
 import TeacherHome from "./Pages/Teacher/TeacherHome";
+import StudentGrades from "./Pages/Teacher/StudentGrades";
 
 export const App = () => {
   return (
@@ -38,6 +39,7 @@ export const App = () => {
           <Route path={RouteNames.Register} element={<Register />} />
           <Route path={RouteNames.Admin} element={<Admin />} />
           <Route path={RouteNames.Teacher} element={<TeacherHome />} />
+          <Route path={RouteNames.Grades} element={<StudentGrades />} />
           <Route path={RouteNames.NoPermission} element={<NoPermission />} />
         </Route>
         <Route path={RouteNames.profile} element={<ProfileLayout />}>

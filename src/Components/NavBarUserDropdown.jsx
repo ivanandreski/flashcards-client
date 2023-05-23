@@ -22,6 +22,7 @@ const NavBarUserDropdown = () => {
   const handleLogout = () => {
     localStorage.removeItem("user");
     navigate(RouteNames.Home);
+    location.reload();
   };
 
   return (

@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import useGetUser from "../../Hooks/useGetUser";
 import RouteNames from "../../Utils/RouteNames";
 import CreateCourse from "./CreateCourse";
-import CreateSubject from "./CreateSubject";
+import CreateDeck from "./CreateDeck";
 import CreateFlashcard from "./CreateFlashcard";
 import axios from "../../axios/axios";
+import AddStudentToCourse from "./AddStudentToCourse";
 
 const TeacherHome = () => {
   const user = useGetUser();
@@ -18,10 +19,11 @@ const TeacherHome = () => {
   });
 
   return (
-    <div className="w-3/6 mx-auto p-10">
+    <div className="p-10 grid grid-cols-2 gap-3">
       <CreateCourse />
-      <CreateSubject />
       <CreateFlashcard />
+      <CreateDeck />
+      <AddStudentToCourse />
     </div>
   );
 };
