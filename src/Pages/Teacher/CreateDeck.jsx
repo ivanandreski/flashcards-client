@@ -31,6 +31,8 @@ const CreateDeck = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    location.reload();
+
     const name = subjectRef.current.value;
 
     if (course == -1) {
@@ -76,6 +78,7 @@ const CreateDeck = () => {
         />
         <Select
           className="mb-5"
+          onChange={(e) => setCourse(e.value)}
           options={courses.map((c) => {
             return {
               value: c.id,

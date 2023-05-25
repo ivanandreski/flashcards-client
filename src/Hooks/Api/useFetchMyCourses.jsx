@@ -24,7 +24,14 @@ const useFetchMyCourses = () => {
     axios.get("/flash-cards/course", config).then((resp) => {
       let c = resp.data;
       if (user.role == "STUDENT") {
-        c = c.filter((c) => c.title == "Math" || c.title == "Programming");
+        c = c.filter(
+          (c) =>
+            c.title == "Math" ||
+            c.title == "Programming" ||
+            c.title == "New Course"
+        );
+      } else {
+        c = c.filter((c) => c.title != "Math");
       }
 
       setCourses(

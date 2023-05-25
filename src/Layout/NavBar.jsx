@@ -30,7 +30,7 @@ const NavBar = () => {
       </ul>
       <ul>
         <li>
-          <NavBarUserDropdown />
+          <NavBarUserDropdown user={user}/>
         </li>
       </ul>
     </nav>

@@ -5,7 +5,7 @@ import useDropdownOutsideAlerter from "../Hooks/useDropdownOutsideAlerter";
 import DropdownButton from "./DropdownButton";
 import RouteNames from "../Utils/RouteNames";
 
-const NavBarUserDropdown = () => {
+const NavBarUserDropdown = ({ user }) => {
   const navigate = useNavigate();
   const loggedIn = useGetUser() != null;
 
@@ -29,7 +29,7 @@ const NavBarUserDropdown = () => {
     <>
       <span ref={buttonRef}>
         <DropdownButton color="fuchsia" handleClick={handleClick}>
-          <span className="text-xl">User </span>
+          <span className="text-xl">{user?.fullName || "User"}</span>
           <svg
             className="w-4 h-4 ml-2"
             fill="none"

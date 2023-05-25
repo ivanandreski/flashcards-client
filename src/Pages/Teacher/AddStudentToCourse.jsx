@@ -35,7 +35,7 @@ const AddStudentToCourse = () => {
     e.preventDefault();
 
     const email = emailRef.current.value;
-
+    location.reload();
     axios
       .post(
         "admin/set-role",

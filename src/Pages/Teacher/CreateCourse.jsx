@@ -13,6 +13,8 @@ const CreateCourse = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    location.reload();
+
     const name = courseRef.current.value;
 
     const config = {

@@ -33,6 +33,7 @@ const CreateFlashcard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    location.reload();
     // post placeholder
   };
 
