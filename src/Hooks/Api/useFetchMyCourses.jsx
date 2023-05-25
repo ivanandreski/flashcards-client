@@ -1,31 +1,40 @@
 import { useState, useEffect } from "react";
 import MyCoursesList from "../../MockDB/MyCoursesList";
 import useGetUser from "../useGetUser";
+import axios from "../../axios/axios";
 
 const useFetchMyCourses = () => {
-  const loggedIn = useGetUser();
+  const user = useGetUser();
 
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  //   useEffect(() => {
-  //     fetch(url)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         seterror(data.error);
-  //         setdata(data.joke);
-  //         setloading(false);
-  //       });
-  //   }, [url]);
-  //   return { data, loading, error };
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user?.token}`,
+    },
+  };
 
-  // Get list from mock db
   useEffect(() => {
-    setCourses(loggedIn ? MyCoursesList.Courses : []);
-    setLoading(false);
-  }, []);
+    if (user == null) {
+      return;
+    }
 
+    axios.get("/flash-cards/course", config).then((resp) => {
+      let c = resp.data;
+      if (user.role == "STUDENT") {
+        c = c.filter((c) => c.title == "Math" || c.title == "Programming");
+      }
+
+      setCourses(
+        c.map((c) => {
+          return { id: c.id, name: c.title };
+        })
+      );
+      setLoading(false);
+    });
+  }, []);
   return { courses, loading, error };
 };
 

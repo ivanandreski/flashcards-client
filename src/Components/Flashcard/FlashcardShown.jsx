@@ -1,13 +1,12 @@
 import React from "react";
 
 const FlashcardShown = ({ goToNextFlashcard, flashcard, setShow }) => {
+  const updateFlashcardState = (state) => {
+    setShow(false);
+    // send request to update flashcardCorrect to true;
 
-    const updateFlashcardState = () => {
-        setShow(false);
-        // send request to update flashcardCorrect to true;
-
-        goToNextFlashcard();
-    }
+    goToNextFlashcard(state);
+  };
 
   return (
     <>
@@ -16,7 +15,7 @@ const FlashcardShown = ({ goToNextFlashcard, flashcard, setShow }) => {
       <div className="flex">
         <div className="w-1/2 pr-2">
           <button
-            onClick={updateFlashcardState}
+            onClick={() => goToNextFlashcard(true)}
             className="w-full text-white bg-sky-500 hover:bg-sky-600 font-bold rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
           >
             Correct
@@ -24,7 +23,7 @@ const FlashcardShown = ({ goToNextFlashcard, flashcard, setShow }) => {
         </div>
         <div className="w-1/2 pl-2">
           <button
-            onClick={goToNextFlashcard}
+            onClick={() => goToNextFlashcard(false)}
             className="w-full text-white bg-fuchsia-600 hover:bg-fuchsia-700 font-bold rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
           >
             Incorrect
